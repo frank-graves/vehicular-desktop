@@ -1,14 +1,16 @@
 {
   "name": "vehicular-desktop",
   "version": "1.0.0",
-  "description": "Aplicación de escritorio segura para consultas vehiculares (Nivel Buzzheavier)",
+  "description": "Aplicación de escritorio segura para consultas vehiculares con Electron, Node.js y SQLite",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
   },
   "devDependencies": {
-    "electron": "^29.0.0",
+    "electron": "^29.0.0"
+  },
+  "dependencies": {
     "sql.js": "^1.10.3"
   },
   "build": {
@@ -17,11 +19,5 @@
     "win": {
       "target": "portable"
     }
-  },
-  "allowScripts": {
-    "electron@29.4.6": true
-  },
-  "dependencies": {
-    "sql.js": "^1.15.2"
   }
 }

@@ -1,43 +1,40 @@
-# Vehicular Desktop (Nivel Buzzheavier)
+# Vehicular Desktop
 
-Aplicación de escritorio profesional construida con **Electron.js** y **Node.js**, cumpliendo con los estándares de seguridad y persistencia del proyecto *Buzzheavier Client*.
+Aplicación de escritorio profesional construida con **Electron.js**, **Node.js** y **SQLite**. Diseñada para realizar consultas vehiculares de manera rápida, segura y con persistencia de datos local.
 
-## 🎯 Características "Nivel Buzzheavier"
-1. **Cifrado de Tokens (Zero-Access):** El token de `json.pe` se cifra localmente usando `AES-256-GCM` (módulo `crypto` de Node) antes de guardarse en el disco duro.
-2. **Base de Datos Local (SQLite):** Utiliza `better-sqlite3` para guardar un historial persistente de las consultas realizadas, incluso si cierras la aplicación.
-3. **Procesos Separados:** El frontend está aislado del backend mediante `contextBridge` (Preload), impidiendo inyecciones de código.
-4. **Consumo de API en Node.js:** Las peticiones HTTP se hacen nativamente en Node.js usando `fetch`, ejecutando consultas en paralelo (`Promise.all`).
+## 🎯 Características Principales
+1. **Bóveda de Tokens Segura:** Los tokens de acceso se cifran localmente usando `AES-256-GCM` (a través del módulo nativo `crypto` de Node.js) antes de guardarse en el disco.
+2. **Base de Datos Local:** Utiliza `sql.js` (SQLite compilado a WebAssembly) para guardar un historial de consultas sin necesidad de compilar módulos nativos de C++.
+3. **Rotación de Tokens:** Capacidad de almacenar múltiples tokens y rotarlos automáticamente si uno alcanza su límite de cuota.
+4. **Arquitectura Segura:** El frontend está aislado del backend mediante `contextBridge` (Preload), previniendo inyecciones de código.
+5. **Consultas en Paralelo:** Las peticiones HTTP se ejecutan simultáneamente usando `Promise.all`.
 
 ## 🚀 Requisitos Previos
 - Node.js (v18 o superior).
-- Herramientas de compilación para módulos nativos (Visual Studio C++ Build Tools en Windows) para poder instalar `better-sqlite3`.
+- No requiere Visual Studio C++ Build Tools (gracias al uso de WebAssembly).
 
-## 🛠️ Instalación
-1. Abre una terminal en esta carpeta.
+## 🛠️ Instalación y Uso
+1. Abre una terminal en la carpeta del proyecto.
 2. Instala las dependencias:
    ```bash
    npm install
-```
-
-3. Inicia la aplicación:
-
-```
-npm start
-```
+   ```
+3. Inicia la aplicación en modo desarrollo:
+   ```bash
+   npm start
+   ```
 
 ## 📦 Generar el ejecutable (.exe)
-
-Para empaquetar la aplicación como un `.exe` portable:
-
-```
+Para empaquetar la aplicación como un archivo `.exe` portable:
+```bash
 npm run build
 ```
-
 El ejecutable se generará en la carpeta `dist/`.
 
-## 🧠 ¿Cómo cumple esto con el sílabo PIAD-527?
-
-- **HT-02 (Backend JS):** Uso de Node.js para manejo de archivos, cifrado, base de datos SQLite y peticiones HTTP.
-- **HT-03 (Frontend JS):** Uso de JavaScript Vanilla para manipular el DOM y comunicación IPC.
-- **HT-04 (API RESTful):** Conexión y consumo de una API RESTful externa (`json.pe`) manejando tokens y respuestas JSON.
-
+## 🧠 Arquitectura del Proyecto
+- **`main.js`**: Proceso principal de Electron, maneja la ventana y la comunicación IPC.
+- **`preload.js`**: Puente seguro entre el frontend y el backend.
+- **`src/crypto.js`**: Lógica de cifrado y almacenamiento de tokens.
+- **`src/db.js`**: Gestión de la base de datos SQLite en WebAssembly.
+- **`src/api.js`**: Cliente HTTP para interactuar con la API externa.
+- **`frontend/`**: Interfaz de usuario (HTML, CSS, JavaScript puro).

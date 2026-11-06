@@ -1,6 +1,6 @@
 /**
- * Módulo de cifrado local (Equivalente al Vault de Buzzheavier).
- * Cifra el token en el disco usando AES-256-GCM para que no esté en texto plano.
+ * Módulo de cifrado local (Bóveda Segura).
+ * Cifra los tokens en el disco usando AES-256-GCM para proteger la información.
  */
 const crypto = require('crypto');
 const fs = require('fs');

@@ -1,4 +1,8 @@
-// src/db.js
+/**
+ * Base de datos local SQLite.
+ * Guarda el historial de consultas de forma persistente sin dependencias nativas.
+ */
+
 const initSqlJs = require('sql.js');
 const path = require('path');
 const os = require('os');

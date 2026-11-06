@@ -1,6 +1,6 @@
 /**
- * Cliente API REST (Consumo de json.pe en Node.js).
- * Equivalente a la lógica de peticiones HTTP de Buzzheavier.
+ * Cliente API REST para el consumo de json.pe.
+ * Implementa rotación de tokens y manejo de peticiones en paralelo.
  */
 const cryptoStore = require('./crypto');
 const db = require('./db');
