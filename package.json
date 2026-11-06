@@ -1,0 +1,27 @@
+{
+  "name": "vehicular-desktop",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio segura para consultas vehiculares (Nivel Buzzheavier)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "sql.js": "^1.10.3"
+  },
+  "build": {
+    "appId": "com.senati.vehiculardesktop",
+    "productName": "VehicularDesktop",
+    "win": {
+      "target": "portable"
+    }
+  },
+  "allowScripts": {
+    "electron@29.4.6": true
+  },
+  "dependencies": {
+    "sql.js": "^1.15.2"
+  }
+}

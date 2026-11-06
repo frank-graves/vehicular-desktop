@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+out/
+*.log
+*.sqlite
+*.db
+*.enc
+.DS_Store
+Thumbs.db
+tree.txt
